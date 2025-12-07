@@ -4,7 +4,7 @@
   "description": "Binance Dashboard",
   "main": "index.js",
   "scripts": {
-    "dev": "tailwindcss -i ./src/input.css -o ./dist/output.css --watch",
+    "dev": "tailwindcss -i ./src/input.css -o ./dist/output.css",
     "build": "tailwindcss -i ./src/input.css -o ./dist/output.css"
   },
   "keywords": [],
@@ -15,4 +15,5 @@
     "postcss": "^8.4.31",
     "tailwindcss": "^3.3.5"
   }
+
 }

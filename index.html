@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binance Futures Dashboard</title>
+    <link href="./dist/output.css" rel="stylesheet">
+    <style>
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #0b0e11; }
+        ::-webkit-scrollbar-thumb { background: #2b3139; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #474d57; }
+        .hidden { display: none; }
+    </style>
+</head>
+<body class="bg-[#0b0e11] text-white min-h-screen font-sans">
+
+    <nav class="border-b border-gray-800 bg-[#181a20] sticky top-0 z-50 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center text-black font-bold text-lg">B</div>
+                <h1 class="text-xl font-bold tracking-tight text-slate-200">合约实时看板</h1>
+            </div>
+            <div class="flex bg-gray-800 rounded-lg p-1">
+                <button id="tab-market" onclick="switchTab('market')" class="px-5 py-1.5 rounded-md text-sm font-medium transition-all bg-gray-600 text-white shadow">全部市场</button>
+                <button id="tab-fav" onclick="switchTab('fav')" class="px-5 py-1.5 rounded-md text-sm font-medium transition-all text-gray-400 hover:text-white hover:bg-gray-700">我的收藏 ⭐</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="max-w-7xl mx-auto px-4 mt-6">
+        <div class="grid grid-cols-12 gap-2 text-xs text-gray-400 uppercase tracking-wider pb-2 border-b border-gray-800 font-medium">
+            <div class="col-span-1 pl-2">排名</div>
+            <div class="col-span-3 flex items-center gap-1 cursor-pointer hover:text-yellow-500" onclick="sortData('symbol')">交易对</div>
+            <div class="col-span-2 text-right cursor-pointer hover:text-yellow-500" onclick="sortData('price')">最新价</div>
+            <div class="col-span-2 text-right cursor-pointer hover:text-yellow-500" onclick="sortData('change')">24h 涨跌</div>
+            <div class="col-span-2 text-right cursor-pointer hover:text-yellow-500" onclick="sortData('volume')">24h 成交额</div>
+            <div class="col-span-2 text-right cursor-pointer hover:text-yellow-500" onclick="sortData('mcap')">市值 (Mcap)</div>
+        </div>
+    </div>
+
+    <main class="max-w-7xl mx-auto px-4 pb-10">
+        <div id="loading" class="text-center py-20 text-gray-500 animate-pulse">
+            正在获取币安行情与市值数据...
+        </div>
+        <div id="coin-list" class="flex flex-col"></div>
+    </main>
+
+    <script src="./app.js"></script>
+</body>
+</html>
